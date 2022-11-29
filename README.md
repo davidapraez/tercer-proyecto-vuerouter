@@ -1,3 +1,6 @@
+Proyecto corriendo en Netlify
+https://tercerproyecto-vuerouter.netlify.app
+
 # tercer-proyecto-router1
 
 This template should help get you started developing with Vue 3 in Vite.
