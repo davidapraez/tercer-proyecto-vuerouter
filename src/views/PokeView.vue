@@ -1,36 +1,38 @@
 <script setup>
 import {ref} from 'vue'
 import {useRoute,useRouter} from 'vue-router'
+import {useGetData} from '@/composables/getdata'
 
 const route=useRoute();
 const router=useRouter();
-const poke=ref({})
+const poke=ref({});
+const {data,getData,loading}=useGetData();
 
 const back=async()=>{
         router.push('/pokemones')
 }
-const getData=async()=>{
-    try{
-        const res=await fetch(`https://pokeapi.co/api/v2/pokemon/${route.params.name}`)
-        const data= await res.json()
-        console.log(data);
-        poke.value=data
-    }catch(error){
-        console.log(error);
-        poke.value=null;
-    }
-}
+// const getData=async()=>{
+//     try{
+//         const res=await fetch(`https://pokeapi.co/api/v2/pokemon/${route.params.name}`)
+//         const data= await res.json()
+//         console.log(data);
+//         poke.value=data
+//     }catch(error){
+//         console.log(error);
+//         poke.value=null;
+//     }
+// }
 
-getData();
+getData(`https://pokeapi.co/api/v2/pokemon/${route.params.name}`);
 </script>
 
 <template>
-    <div v-if="poke">
-        <img :src="poke.sprites?.front_default" alt="#" class="imgn">
+    <div v-if="data">
+        <img :src="data.results.sprites?.front_default" alt="#" class="imgn">
         <h1>Poke name: {{$route.params.name}}</h1>
         <h4>abilities</h4>
         <ul>
-            <li v-for="hability in poke.abilities">
+            <li v-for="hability in data.results.abilities">
                 {{hability.ability.name}}
             </li>
         </ul>

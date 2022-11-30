@@ -1,0 +1,24 @@
+import {ref} from 'vue';
+export const useGetData=()=>{
+    const data=ref(null);
+    const loading=ref(true);
+    const getData=async(url)=>{
+        loading.value=true;
+        try{
+            const res=await fetch(url);
+            const datos= await res.json();
+            data.value=datos.data;
+
+        }catch(error){
+            console.log(error);
+        }
+        finally{
+            loading.value=false;
+        }
+    };
+    return{
+        getData,
+        data,
+        loading,
+    };
+};
