@@ -7,10 +7,12 @@ export const useGetData=()=>{
         try{
             const res=await fetch(url);
             const datos= await res.json();
-            data.value=datos.data;
+            data.value=datos;
+            
 
         }catch(error){
             console.log(error);
+            
         }
         finally{
             loading.value=false;

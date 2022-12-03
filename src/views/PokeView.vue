@@ -11,19 +11,19 @@ const {data,getData,loading}=useGetData();
 const back=async()=>{
         router.push('/pokemones')
 }
-// const getData=async()=>{
+// const getDatos=async()=>{
 //     try{
 //         const res=await fetch(`https://pokeapi.co/api/v2/pokemon/${route.params.name}`)
 //         const data= await res.json()
-//         console.log(data);
 //         poke.value=data
 //     }catch(error){
 //         console.log(error);
 //         poke.value=null;
 //     }
 // }
-
+//getDatos();
 getData(`https://pokeapi.co/api/v2/pokemon/${route.params.name}`);
+const datos=getData('https://pokeapi.co/api/v2/pokemon/');
 </script>
 
 <template>
