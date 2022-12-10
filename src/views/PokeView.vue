@@ -1,12 +1,12 @@
 <script setup>
-import {ref} from 'vue'
+//import {ref} from 'vue'
 import {useRoute,useRouter} from 'vue-router'
-import {useGetData} from '@/composables/getdata'
-
+import {useGetData} from '@/composables/getDatos'
 const route=useRoute();
 const router=useRouter();
-const poke=ref({});
+//const poke=ref({});
 const {data,getData,loading}=useGetData();
+
 
 const back=async()=>{
         router.push('/pokemones')
@@ -21,13 +21,17 @@ const back=async()=>{
 //         poke.value=null;
 //     }
 // }
-//getDatos();
 getData(`https://pokeapi.co/api/v2/pokemon/${route.params.name}`);
-const datos=getData('https://pokeapi.co/api/v2/pokemon/');
+console.log(data);
+//getData(`https://pokeapi.co/api/v2/pokemon/`);
+
+
 </script>
 
 <template>
-    <div v-if="data">
+    <p v-if="loading">Cargando informacion..</p>
+    
+    <!-- <div v-if="data">
         <img :src="data.results.sprites?.front_default" alt="#" class="imgn">
         <h1>Poke name: {{$route.params.name}}</h1>
         <h4>abilities</h4>
@@ -36,9 +40,7 @@ const datos=getData('https://pokeapi.co/api/v2/pokemon/');
                 {{hability.ability.name}}
             </li>
         </ul>
-
-
-    </div>
+    </div> -->
     <h1 v-else>No existe el Poke</h1>
     <button @click="back" class="btn btn-outline-primary ">Volver</button>
 </template>

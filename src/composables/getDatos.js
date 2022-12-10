@@ -8,11 +8,9 @@ export const useGetData=()=>{
             const res=await fetch(url);
             const datos= await res.json();
             data.value=datos;
-            
-
         }catch(error){
             console.log(error);
-            
+ 
         }
         finally{
             loading.value=false;
