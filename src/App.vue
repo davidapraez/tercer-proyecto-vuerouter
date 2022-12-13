@@ -13,7 +13,7 @@ getDatos();
 </script>
 
 <template>
-  <nav class="navbar bg-light">
+  <nav class="navbar bg-dark navbar-dark">
     <div class="container-fluid">
       <router-link class="navbar-brand" to="/">
         <img
@@ -36,7 +36,7 @@ getDatos();
   <header>
     <div class="wrapper"></div>
   </header>
-  <div class="container">
+  <div class="container text-center">
     <RouterView />
   </div>
 </template>
