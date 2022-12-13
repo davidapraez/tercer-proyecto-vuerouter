@@ -2,12 +2,13 @@
 import {RouterLink} from 'vue-router'
 import {useGetData} from '@/composables/getDatos'
 
-const {data,getData,loading}=useGetData();
+const {data,getData,loading,errorData}=useGetData();
 getData('https://pokeapi.co/api/v2/pokemon/');
 </script>
 <template>
     <h1>Pokemones</h1>
     <p v-if="loading">Cargando informacion..</p>
+    <div class="alert alert-danger" v-if="errorData">{{errorData}}</div>
     <div v-if="data">
         <ul >
             <li v-for="pokem in data?.results">
